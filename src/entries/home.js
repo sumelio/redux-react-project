@@ -13,6 +13,9 @@ import { Map as map } from "immutable";
 // Logger with default options
 import logger from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
+
+import thunk from "redux-thunk";
+
 //console.log("data", data);
 console.log("normalizedData", data);
 
@@ -53,7 +56,13 @@ const loggerCustomer = ({ getState, dispatch }) => next => action => {
 const store = createStore(
   reducer,
   map(),
-  composeWithDevTools(applyMiddleware(logger, loggerCustomer))
+  composeWithDevTools(
+    applyMiddleware(
+      logger,
+      //loggerCustomer
+      thunk
+    )
+  )
   //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

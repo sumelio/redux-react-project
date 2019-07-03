@@ -6,10 +6,11 @@ import Media from "../../playlist/components/media.js";
 import MediaContainer from "../../playlist/containers/media";
 
 function Categories(props) {
-  console.log("props.search:", props.search);
+  console.log("props.isLoading:", props.isLoading);
   return (
     <div className="Categories">
       <Search />
+      {props.isLoading && <p> Loading.....</p>}
       {props.search.map(item => {
         return (
           <MediaContainer
